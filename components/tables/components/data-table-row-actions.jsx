@@ -70,7 +70,7 @@ export function DataTableRowActions({ row: set_exam, type }) {
       {type === 'dialog' && (
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button className="capitalize bg-blue-500">
+            <Button className="capitalize ">
               <CirclePlus />
               {type}
             </Button>
@@ -91,7 +91,7 @@ export function DataTableRowActions({ row: set_exam, type }) {
       {type === 'button' && (
         <Button
           className={`capitalize ${
-            type === 'remove' ? 'bg-red-500' : 'bg-blue-500'
+            type === 'remove' ? 'bg-red-500' : 'bg-primary'
           } ${
             type === 'view' || ('subjectListView' && 'w-[100px] rounded-md')
           }`}
