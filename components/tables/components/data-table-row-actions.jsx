@@ -21,7 +21,7 @@ import { CirclePlus, MoreHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-export function DataTableRowActions({ row: set_exam, type }) {
+export function DataTableRowActions({ row: set_exam, type, FormComponent }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const handleClick = () => {
@@ -84,7 +84,7 @@ export function DataTableRowActions({ row: set_exam, type }) {
                 Please fill in the following details to {type}
               </DialogDescription>
             </DialogHeader>
-            {/* <SectionForm exam_id={exam_id} onClose={() => setOpen(false)}/> */}
+            <FormComponent exam_id={exam_id} onClose={() => setOpen(false)}/>
           </DialogContent>
         </Dialog>
       )}
