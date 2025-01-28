@@ -20,7 +20,7 @@ const NavigationItem = ({ item, isActive }) => (
     <SidebarMenuButton asChild className="rounded-sm">
       <Link
         className={clsx(
-          'py-5 px-10 hover:bg-primary/70 transition-colors flex items-center gap-4 font-semibold',
+          'py-5 px-10 hover:bg-primary transition-colors flex items-center gap-4 font-semibold',
           { 'bg-primary': isActive }
         )}
         href={item.href}

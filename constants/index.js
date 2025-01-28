@@ -29,3 +29,14 @@ export const navLinks = [
   { name: 'Exams', href: '/staff/exams', icon: BookDashedIcon },
   // {name: 'Settings', href: '/staff/settings', icon: Settings},
 ];
+
+export const FormFieldTypes = {
+  INPUT: 'input',
+  TEXTAREA: 'textarea',
+  PHONE_INPUT: 'phoneInput',
+  CHECKBOX: 'checkbox',
+  SELECT: 'select',
+  DATE_PICKER: 'datePicker',
+  SKELETON: 'skeleton',
+  EDITOR: 'editor',
+};
