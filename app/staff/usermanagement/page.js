@@ -15,7 +15,7 @@ const UsersPage = () => {
       <BreadCrumbsHeader items={items} />
       <div className="p-5 px-10">
         <Card className="border-0">
-          <CardHeader className=" py-4">
+          <CardHeader className=" py-4 bg-secondary">
             <CardTitle className="text-xl">User Management</CardTitle>
           </CardHeader>
           <CardContent className="py-5">

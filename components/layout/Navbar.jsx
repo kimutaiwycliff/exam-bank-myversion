@@ -4,7 +4,7 @@ import Profile from "./Profile"
 
 const Navbar = () => {
   return (
-    <nav className="py-3 px-5 text-xl font-bold ">
+    <nav className="py-3 px-5 text-xl font-bold bg-secondary ">
       <div className="flex justify-between">
         <div className="flex gap-5 items-center">
           <SidebarTrigger />

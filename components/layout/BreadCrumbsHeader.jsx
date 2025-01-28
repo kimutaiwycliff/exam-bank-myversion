@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 const BreadCrumbsHeader = ({ items, containerClass }) => {
   return (
-    <Breadcrumb className={cn('mx-10', containerClass)}>
+    <Breadcrumb className={cn('mx-10 mt-5', containerClass)}>
       <BreadcrumbList className="text-md">
         <BreadcrumbItem>
           <BreadcrumbLink href="/staff/dashboard">Home</BreadcrumbLink>
