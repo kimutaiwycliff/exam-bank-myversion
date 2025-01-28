@@ -7,10 +7,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '../ui/breadcrumb';
+import { cn } from '@/lib/utils';
 
-const BreadCrumbsHeader = ({ items }) => {
+const BreadCrumbsHeader = ({ items, containerClass }) => {
   return (
-    <Breadcrumb className="mx-2">
+    <Breadcrumb className={cn('mx-10', containerClass)}>
       <BreadcrumbList className="text-md">
         <BreadcrumbItem>
           <BreadcrumbLink href="/staff/dashboard">Home</BreadcrumbLink>

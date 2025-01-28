@@ -160,3 +160,65 @@ export const gradesColumns = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];
+
+export const usersColumns = [
+  {
+    id: 'id',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
+    cell: ({ row }) => <div className="w-[80px]">{row.index + 1}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'username',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Username" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('username')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Name" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('name')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'phone_number',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Phone Number" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('phone_number')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'email',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Email" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('email')}
+        </span>
+      );
+    },
+  },
+]
