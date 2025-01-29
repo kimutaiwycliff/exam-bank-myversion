@@ -6,9 +6,9 @@ const items = [{ name: 'User Management' }];
 const list = ['Staff', 'Schools', 'Teachers', 'Students'];
 const UsersPage = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const handleClick = (name) => {
-    const router = useRouter();
-    router.push(`${pathname}/${name}`, { scroll: false });
+    router.push(`${pathname}/${name}`);
   };
   return (
     <div className="md:w-1/2">

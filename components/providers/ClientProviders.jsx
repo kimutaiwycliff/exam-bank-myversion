@@ -14,7 +14,8 @@ const ClientProviders = ({ children }) => {
         disableTransitionOnChange
       >
         <Toaster />
-        <SideBarProvider>{children}</SideBarProvider>
+        {children}
+        {/* <SideBarProvider>{children}</SideBarProvider> */}
       </ThemeProvider>
     </ReactQueryProvider>
   );
