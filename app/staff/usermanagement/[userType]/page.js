@@ -1,6 +1,7 @@
-import { sentenceCase } from "@/lib/utils";
+import CardWithTable from '@/components/staff/CardWithDatatable';
+import { sentenceCase } from '@/lib/utils';
 
-const defaultItems = [{ name: "UserManagement", url: "/staff/usermanagement" }];
+const defaultItems = [{ name: 'UserManagement', url: '/staff/usermanagement' }];
 const Page = ({ params: { userType } }) => {
   const label = sentenceCase(userType);
   const updatedItems = [
@@ -8,7 +9,15 @@ const Page = ({ params: { userType } }) => {
     ...(userType ? [{ name: label }] : []),
   ];
   return (
-    <div>Page</div>
-  )
-}
-export default Page
+    <CardWithTable
+      items={updatedItems}
+      title={label}
+      fetchFn={getUsers}
+      fetchQueryKey={`usermanagement-${userType}`}
+      columns={[]}
+      searchColumn="name"
+      searchLabel="Name"
+    />
+  );
+};
+export default Page;

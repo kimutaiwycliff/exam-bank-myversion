@@ -1,7 +1,8 @@
+import LoginPage from "@/components/staff/LoginPage"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <LoginPage />
   )
 }
 export default Home
