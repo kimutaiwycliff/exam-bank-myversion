@@ -50,7 +50,7 @@ function LoginForm() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
-        <div className=" mx-auto rounded-xl bg-gradient-to-b from-slate-300 to-slate-100">
+        <div className=" mx-auto rounded-xl  ">
           <Logo />
         </div>
 
