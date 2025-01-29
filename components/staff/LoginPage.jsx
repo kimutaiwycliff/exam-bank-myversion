@@ -3,7 +3,7 @@ import LoginForm from "./forms/LoginForm";
 const LoginPage = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-secondary to-secondary/45 p-5">
-      <div className="w-full max-w-4xl md:grid md:grid-cols-2 rounded-lg shadow-lg backdrop-blur-md bg-opacity-80">
+      <div className="w-full max-w-4xl md:grid md:grid-cols-2 rounded-lg shadow-lg backdrop-blur-md bg-opacity-80 border border-slate-600 z-20 hover:border-primary">
         {/* Left-side Information Panel */}
         <div className="hidden md:flex justify-center items-center bg-slate-600 bg-opacity-80 text-white p-5 rounded-l-lg">
           <div className="flex flex-col space-y-8 px-5 text-center">
