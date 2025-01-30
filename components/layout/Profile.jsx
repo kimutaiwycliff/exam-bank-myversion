@@ -1,3 +1,4 @@
+'use client';
 import { useToast } from '@/hooks/use-toast';
 import {
   DropdownMenu,
@@ -10,25 +11,26 @@ import {
 } from '../ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import Link from 'next/link';
+import { logout } from '@/lib/actions/Auth';
 
 const Profile = () => {
   const { toast } = useToast();
   const handleLogout = async (event) => {
-    // event.preventDefault();
-    // const result = await logout();
-    // if (result?.errors) {
-    //   toast({
-    //     variant: 'destructive',
-    //     title: 'Logout failed',
-    //     description: 'Failed to logout. Please try again.',
-    //   });
-    // } else {
-    //   toast({
-    //     variant: 'success',
-    //     title: 'Success',
-    //     description: 'Successfully logged out.',
-    //   });
-    // }
+    event.preventDefault();
+    const result = await logout();
+    if (result?.errors) {
+      toast({
+        variant: 'destructive',
+        title: 'Logout failed',
+        description: 'Failed to logout. Please try again.',
+      });
+    } else {
+      toast({
+        variant: 'success',
+        title: 'Success',
+        description: 'Successfully logged out.',
+      });
+    }
   };
   return (
     <DropdownMenu>
