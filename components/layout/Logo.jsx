@@ -11,6 +11,7 @@ const Logo = () => {
         width="250"
         quality={100}
         alt="The Achievers Focus logo"
+        priority={true}
       />
     </Link>
   );
