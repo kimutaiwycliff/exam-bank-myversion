@@ -1,23 +1,21 @@
-'use client';
-
 import BreadCrumbsHeader from '../layout/BreadCrumbsHeader';
+import SpinningLoader from '../loaders/SpinningLoader';
 import { DataTable } from '../tables/components/data-table';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 const CardWithTable = ({
   items,
   title,
-  fetchFn,
-  fetchQueryKey,
   columns,
+  data,
   searchColumn,
   searchLabel,
   filters,
+  isLoading,
+  isError,
+  error
 }) => {
-  const { data } = useQuery({
-    queryKey: [{ fetchQueryKey }],
-    queryFn: () => fetchFn({ pageIndex: 0 }).then((res) => res.results),
-  });
+
   return (
     <>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
@@ -27,6 +25,13 @@ const CardWithTable = ({
             <CardTitle className="text-xl">{title}</CardTitle>
           </CardHeader>
           <CardContent className="py-5">
+          {isLoading ? (
+            <div className="mx-auto">
+              <SpinningLoader />
+            </div>
+          ) : isError ? (
+            <p className="text-red-500">Error: {error.message}</p>
+          ) : (
             <DataTable
               data={data}
               columns={columns}
@@ -34,7 +39,8 @@ const CardWithTable = ({
               searchLabel={searchLabel}
               filters={filters}
             />
-          </CardContent>
+          )}
+        </CardContent>
         </Card>
       </div>
     </>
