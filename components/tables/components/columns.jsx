@@ -440,7 +440,7 @@ export const difficultyLevelsColumns = [
     ),
     cell: ({ row }) => {
       return (
-        <span className="w-[100px] truncate font-medium">
+        <span className=" w-[100px]truncate font-medium">
           {row.getValue('name')}
         </span>
       );
@@ -453,9 +453,9 @@ export const difficultyLevelsColumns = [
     ),
     cell: ({ row }) => {
       return (
-        <span className="w-[100px] truncate font-medium">
+        <div className="w-[250px] min-w-[750px] truncate font-medium">
           {row.getValue('description')}
-        </span>
+        </div>
       );
     },
   },
