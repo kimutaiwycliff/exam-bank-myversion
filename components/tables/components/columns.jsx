@@ -453,7 +453,7 @@ export const difficultyLevelsColumns = [
     ),
     cell: ({ row }) => {
       return (
-        <div className="w-[250px] min-w-[750px] truncate font-medium">
+        <div className="w-[250px]  truncate font-medium">
           {row.getValue('description')}
         </div>
       );

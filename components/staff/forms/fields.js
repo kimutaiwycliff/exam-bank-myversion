@@ -98,3 +98,18 @@ export const difficultyLevelFormFields = [
     fieldType: FormFieldTypes.TEXTAREA,
   },
 ];
+
+export const examTypeFormFields = [
+  {
+    name: "name",
+    label: "Name",
+    placeholder: "MODERATE",
+    fieldType: FormFieldTypes.INPUT,
+  },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Describe the exam type...",
+    fieldType: FormFieldTypes.TEXTAREA,
+  },
+];
