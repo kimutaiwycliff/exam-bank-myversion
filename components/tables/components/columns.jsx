@@ -355,4 +355,26 @@ export const topicColumns = [
     },
   },
 ]
+export const objectiveColumns = [
+  {
+    id: 'id',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
+    cell: ({ row }) => <div className="w-[80px]">{row.index + 1}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'description',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Description" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="max-w-[10px] truncate font-medium">
+          {row.getValue('description')}
+        </span>
+      );
+    },
+  },
+]
 

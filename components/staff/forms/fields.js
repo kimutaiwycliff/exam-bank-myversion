@@ -64,3 +64,22 @@ export const subjectFormFields = [
     fieldType: FormFieldTypes.TEXTAREA,
   },
 ];
+
+export const objectiveFormFields = [
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Describe the subject...",
+    fieldType: FormFieldTypes.TEXTAREA,
+  },
+  {
+    name: "subtopic",
+    inputType: "hidden",
+    fieldType: FormFieldTypes.INPUT,
+  },
+  {
+    name: "topic",
+    inputType: "hidden",
+    fieldType: FormFieldTypes.INPUT,
+  },
+];
