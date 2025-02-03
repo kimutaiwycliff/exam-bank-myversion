@@ -34,3 +34,18 @@ export const staffFormFields = [
     fieldType: FormFieldTypes.INPUT,
   },
 ];
+
+export const gradeFormFields = [
+  {
+    name: "name",
+    label: "Name",
+    placeholder: "Form 1",
+    fieldType: FormFieldTypes.INPUT,
+  },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Describe the grade...",
+    fieldType: FormFieldTypes.TEXTAREA,
+  },
+];
