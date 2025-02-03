@@ -83,3 +83,18 @@ export const objectiveFormFields = [
     fieldType: FormFieldTypes.INPUT,
   },
 ];
+
+export const difficultyLevelFormFields = [
+  {
+    name: "name",
+    label: "Name",
+    placeholder: "MODERATE",
+    fieldType: FormFieldTypes.INPUT,
+  },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Describe the difficulty level...",
+    fieldType: FormFieldTypes.TEXTAREA,
+  },
+];
