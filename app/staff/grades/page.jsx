@@ -16,7 +16,6 @@ const GradesPage = () => {
     },
     staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
   });
-  console.log('data for grades', data);
 
   return (
     <CardWithTable

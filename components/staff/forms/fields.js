@@ -49,3 +49,18 @@ export const gradeFormFields = [
     fieldType: FormFieldTypes.TEXTAREA,
   },
 ];
+
+export const subjectFormFields = [
+  {
+    name: "name",
+    label: "Name",
+    placeholder: "Physics",
+    fieldType: FormFieldTypes.INPUT,
+  },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Describe the subject...",
+    fieldType: FormFieldTypes.TEXTAREA,
+  },
+];
