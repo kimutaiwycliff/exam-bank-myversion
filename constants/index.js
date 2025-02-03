@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 export const navLinks = [
-  { name: 'Home', href: '/staff/home', icon: Home },
+  { name: 'Home', href: '/staff/dashboard', icon: Home },
   { name: 'Users', href: '/staff/usermanagement', icon: Users },
   { name: 'Grades', href: '/staff/grades', icon: ChartBar },
   { name: 'Subjects', href: '/staff/subjects', icon: BookOpen },
