@@ -1,16 +1,16 @@
 'use client';
 import CardWithTable from '@/components/staff/CardWithDatatable';
-import SubjectForm from '@/components/staff/forms/SubjectForm';
-import { subjectColumns } from '@/components/tables/components/columns';
-import { getSubjects } from '@/lib/actions/Staff';
+import TopicForm from '@/components/staff/forms/TopicForm';
+import { topicColumns } from '@/components/tables/components/columns';
+import {  getTopics } from '@/lib/actions/Staff';
 import { useQuery } from '@tanstack/react-query';
-const SubjectsPage = () => {
-  const items = [{ name: 'Subjects' }];
+const TopicsPage = () => {
+  const items = [{ name: 'Topics' }];
   // Fetch users using React Query
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['subjects'], // Cache key includes userType to refetch when it changes
+    queryKey: ['topics'], // Cache key includes userType to refetch when it changes
     queryFn: async () => {
-      const { results } = await getSubjects({ pageIndex: 0 });
+      const { results } = await getTopics({ pageIndex: 0 });
       return results;
     },
     staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
@@ -19,16 +19,16 @@ const SubjectsPage = () => {
   return (
     <CardWithTable
       items={items}
-      title="Subjects"
-      columns={subjectColumns}
+      title="Topics"
+      columns={topicColumns}
       data={data}
       searchColumn="name"
       searchLabel="Name"
       isLoading={isLoading}
       isError={isError}
       error={error}
-      Form={SubjectForm}
+      Form={TopicForm}
     />
   );
-};
-export default SubjectsPage;
+}
+export default TopicsPage

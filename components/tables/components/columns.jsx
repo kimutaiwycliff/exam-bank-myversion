@@ -294,3 +294,65 @@ export const subjectColumns = [
     },
   },
 ]
+export const topicColumns = [
+  {
+    id: 'id',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
+    cell: ({ row }) => <div className="w-[80px]">{row.index + 1}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Name" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('name')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'grade_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Grade" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="max-w-[10px] truncate font-medium">
+          {row.getValue('grade_name')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'subject_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Subject" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="max-w-[10px] truncate font-medium">
+          {row.getValue('subject_name')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'description',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Description" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="max-w-[10px] truncate font-medium">
+          {row.getValue('description')}
+        </span>
+      );
+    },
+  },
+]
+

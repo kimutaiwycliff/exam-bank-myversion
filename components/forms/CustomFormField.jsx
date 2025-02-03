@@ -63,9 +63,32 @@ const RenderField = ({ field, props }) => {
       };
 
       const customStyles = {
-        placeholder: (provided) => ({
-          ...provided,
-          fontStyle: 'italic',
+        control: (base, state) => ({
+          ...base,
+          backgroundColor: 'hsl(var(--background))', // Uses Tailwind `background`
+          borderColor: state.isFocused ? 'hsl(var(--primary))' : 'hsl(var(--border))',
+          color: 'hsl(var(--foreground))',
+          '&:hover': {
+            borderColor: 'hsl(var(--primary))',
+          },
+        }),
+        menu: (base) => ({
+          ...base,
+          backgroundColor: 'hsl(var(--primary))', // Uses Tailwind `primary`
+        }),
+        option: (base, { isFocused, isSelected }) => ({
+          ...base,
+          backgroundColor: isSelected
+            ? 'hsl(var(--primary))'
+            : isFocused
+            ? 'hsl(var(--secondary))'
+            : 'hsl(var(--background))',
+          color: isSelected ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
+          cursor: 'pointer',
+        }),
+        singleValue: (base) => ({
+          ...base,
+          color: 'hsl(var(--foreground))',
         }),
       };
 
