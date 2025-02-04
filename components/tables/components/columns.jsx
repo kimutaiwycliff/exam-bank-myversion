@@ -287,9 +287,9 @@ export const subjectColumns = [
     ),
     cell: ({ row }) => {
       return (
-        <span className="max-w-[10px] truncate font-medium">
+        <div className="w-[250px] truncate font-medium">
           {row.getValue('description')}
-        </span>
+        </div>
       );
     },
   },
@@ -455,6 +455,80 @@ export const difficultyLevelsColumns = [
       return (
         <div className="w-[250px]  truncate font-medium">
           {row.getValue('description')}
+        </div>
+      );
+    },
+  },
+]
+export const questionColumns = [
+  {
+    id: 'id',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
+    cell: ({ row }) => <div className="w-[80px]">{row.index + 1}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'subject_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Subject" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('subject_name')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'topic_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Topic" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="w-[250px] truncate font-medium">
+          {row.getValue('topic_name')}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'difficulty_level_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Difficulty Level" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="w-[250px] truncate font-medium">
+          {row.getValue('difficulty_level_name')}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'marks',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Marks" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="w-[250px] truncate font-medium">
+          {row.getValue('marks')}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'date_created',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Date Added" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="w-[250px] truncate font-medium">
+          {row.getValue('date_created')}
         </div>
       );
     },
