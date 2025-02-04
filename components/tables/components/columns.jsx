@@ -604,49 +604,129 @@ export const SubjectListViewColumns = [
   //     enableHiding: false,
   //   },
   {
-    header: "No.",
+    header: 'No.',
     cell: (info) => info.row.index + 1,
-},
+  },
   {
-      accessorKey: "term",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Term" />
-      ),
+    accessorKey: 'term',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Term" />
+    ),
+  },
+  {
+    accessorKey: 'grade_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Class/Grade" />
+    ),
+  },
+  {
+    accessorKey: 'exam_type_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Exam Type" />
+    ),
+  },
+  {
+    accessorKey: 'date_created',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Process Date" />
+    ),
+    cell: ({ cell }) => {
+      const date = new Date(cell.getValue());
+      return format(date, 'do MMMM yyyy');
     },
-    {
-      accessorKey: "grade_name",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Class/Grade" />
-      ),
-    },
-    {
-      accessorKey: "exam_type_name",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Exam Type" />
-      ),
-    },
-    {
-      accessorKey: "date_created",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Process Date" />
-      ),
-      cell: ({ cell }) => {
-        const date = new Date(cell.getValue());
-        return format(date, "do MMMM yyyy");
-      },
-    },
-    {
-      id: 'actions',
-      header: () => <div className="pl-4">Actions</div>,
-      cell: ({ row }) => {
-        const set_exam = row.original;
+  },
+  {
+    id: 'actions',
+    header: () => <div className="pl-4">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
 
-        return (
-          <>
-            <SetExamModal type="subjectListView" set_exam={set_exam} />
-          </>
-        );
-      },
+      return (
+        <>
+          <SetExamModal type="subjectListView" set_exam={set_exam} />
+        </>
+      );
     },
+  },
+];
+export const setExamColumns = [
+  {
+    id: 'id',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
+    cell: ({ row }) => <div className="w-[80px]">{row.index + 1}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Section Name" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('name')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'number_of_questions',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title="Number of Questions Per Section"
+      />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('number_of_questions')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'total_marks',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Marks Per Section" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('total_marks')}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: 'instructions',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Section Instructions" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('instructions')}
+        </span>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
 
-]
+      return (
+        <>
+          <div className="flex gap-1">
+            <SetExamModal type="add questions" set_exam={set_exam} />
+            <SetExamModal type="remove" set_exam={set_exam} />
+          </div>
+          =
+        </>
+      );
+    },
+  },
+];
