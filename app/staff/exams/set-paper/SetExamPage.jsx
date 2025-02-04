@@ -3,6 +3,7 @@ import CustomFormField from '@/components/forms/CustomFormField';
 import BreadCrumbsHeader from '@/components/layout/BreadCrumbsHeader';
 import { SkeletonMini } from '@/components/loaders/SpinningLoader';
 import CardWithTable from '@/components/staff/CardWithDatatable';
+import QuestionCard from '@/components/staff/QuestionCard';
 import SectionCard from '@/components/staff/SectionCard';
 import SetExamModal from '@/components/staff/SetExamModal';
 import { setExamColumns } from '@/components/tables/components/columns';
@@ -18,14 +19,14 @@ import {
   getSubjects,
 } from '@/lib/actions/Staff';
 import { examSchema } from '@/lib/schemas';
-import { capitalizeFirstLetter } from '@/lib/utils';
+import { capitalizeFirstLetter, extractQuestion } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Form, useForm } from 'react-hook-form';
 
-const SetExamPage = ({ status, exam_details, isLoading }) => {
+const SetExamPage = ({ status, exam_details }) => {
   const { toast } = useToast();
   const [selectedSection, setSelectedSection] = useState(
     exam_details?.sections && exam_details?.sections.length > 0
@@ -308,7 +309,7 @@ const SetExamPage = ({ status, exam_details, isLoading }) => {
                           selectedSection?.name === section?.name &&
                           !isPreviewMode
                             ? 'bg-primary'
-                            : 'hover:bg-primary '
+                            : 'bg-secondary text-primary hover:bg-primary/80 hover:text-secondary  '
                         }`}
                         onClick={() => {
                           setSelectedSection(section);
@@ -323,7 +324,7 @@ const SetExamPage = ({ status, exam_details, isLoading }) => {
                         className={`text-md font-semibold rounded-none border border-primary/75 h-[60px] w-[200px] ${
                           isPreviewMode
                             ? 'bg-primary'
-                            : 'bg-primary/50 hover:bg-primary '
+                            : ' bg-secondary text-primary hover:bg-primary/80 hover:text-secondary'
                         }`}
                         onClick={() => setIsPreviewMode(true)}
                       >
@@ -377,10 +378,10 @@ const SetExamPage = ({ status, exam_details, isLoading }) => {
                         </div>
                       </div>
                       <div className="flex flex-row justify-end mb-1 mx-4 space-x-4">
-                        <Button className="bg-white text-blue-700 border border-gray-200 rounded-sm w-[100px] hover:text-white">
+                        <Button className="bg-white  border border-gray-200 rounded-sm w-[100px] hover:text-white">
                           Back
                         </Button>
-                        <Button className="bg-blue-500 rounded-sm w-[100px]">
+                        <Button className=" rounded-sm w-[100px]">
                           Save
                         </Button>
                       </div>

@@ -3,6 +3,7 @@ import { CardHeader, CardTitle } from '../ui/card';
 import { capitalizeAllLetters, extractQuestion } from '@/lib/utils';
 import { Button } from '../ui/button';
 import PreviewCard from './PreviewCard';
+import { Pencil } from 'lucide-react';
 
 const SectionCard = ({ section, show = false }) => {
   const router = useRouter();

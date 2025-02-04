@@ -18,6 +18,7 @@ import CustomFormField from '../forms/CustomFormField';
 import { FormFieldTypes } from '@/constants';
 import QuestionCard from './QuestionCard';
 import { Form } from '../ui/form';
+import { Button } from '../ui/button';
 
 const QuestionDialog = ({ type, questionObject }) => {
   const { toast } = useToast();
