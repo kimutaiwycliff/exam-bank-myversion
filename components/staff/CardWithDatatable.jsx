@@ -27,13 +27,15 @@ const CardWithTable = ({
         <Card className=" border-1 sticky w-full">
           <CardHeader className=" py-4 flex flex-row justify-between">
             <CardTitle className="text-xl">{title}</CardTitle>
-            <DialogModal
-              title={title}
-              FormComponent={Form}
-              isEditSession={isEditSession}
-              editId={editId}
-              editValues={editValues}
-            />
+            {Form && (
+              <DialogModal
+                title={title}
+                FormComponent={Form}
+                isEditSession={isEditSession}
+                editId={editId}
+                editValues={editValues}
+              />
+            )}
           </CardHeader>
           <CardContent className="py-5">
             {isLoading ? (

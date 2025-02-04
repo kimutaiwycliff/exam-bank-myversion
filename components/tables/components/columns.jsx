@@ -5,6 +5,7 @@ import { DataTableColumnHeader } from './data-table-column-header';
 import { labels, priorities, statuses } from '../data/data';
 import { DataTableRowActions } from './data-table-row-actions';
 import { Badge } from '@/components/ui/badge';
+import SetExamModal from '@/components/staff/SetExamModal';
 
 export const columns = [
   {
@@ -221,7 +222,7 @@ export const usersColumns = [
       );
     },
   },
-]
+];
 
 export const gradeColumns = [
   {
@@ -257,7 +258,7 @@ export const gradeColumns = [
       );
     },
   },
-]
+];
 
 export const subjectColumns = [
   {
@@ -293,7 +294,7 @@ export const subjectColumns = [
       );
     },
   },
-]
+];
 export const topicColumns = [
   {
     id: 'id',
@@ -354,7 +355,7 @@ export const topicColumns = [
       );
     },
   },
-]
+];
 export const objectiveColumns = [
   {
     id: 'id',
@@ -376,7 +377,7 @@ export const objectiveColumns = [
       );
     },
   },
-]
+];
 export const subtopicColumns = [
   {
     id: 'id',
@@ -424,7 +425,7 @@ export const subtopicColumns = [
       );
     },
   },
-]
+];
 export const difficultyLevelsColumns = [
   {
     id: 'id',
@@ -459,7 +460,7 @@ export const difficultyLevelsColumns = [
       );
     },
   },
-]
+];
 export const questionColumns = [
   {
     id: 'id',
@@ -533,5 +534,48 @@ export const questionColumns = [
       );
     },
   },
-]
+];
+export const examColumns = [
+  {
+    id: 'id',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="#" />,
+    cell: ({ row }) => <div className="w-[80px]">{row.index + 1}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'subject_name',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Subject" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <span className="w-[100px] truncate font-medium">
+          {row.getValue('subject_name')}
+        </span>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
 
+      return (
+        <>
+          {/* {label === 'setExam' && (
+            <div className="flex gap-1">
+              <SetExamModal type="add questions" set_exam={set_exam} />
+              <SetExamModal type="remove" set_exam={set_exam} />
+            </div>
+          )} */}
+
+          <div className="flex gap-1 ">
+            <SetExamModal type="view" set_exam={set_exam} />
+          </div>
+        </>
+      );
+    },
+  },
+];
