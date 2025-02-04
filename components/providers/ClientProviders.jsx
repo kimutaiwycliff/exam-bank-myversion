@@ -3,7 +3,6 @@ import { Toaster } from '../ui/toaster';
 import ReactQueryProvider from './react-query-provider';
 import SideBarProvider from './SideBarProvider';
 import { ThemeProvider } from './theme-provider';
-import { UserProvider } from './UserContext';
 
 const ClientProviders = ({ children }) => {
   return (
@@ -17,7 +16,6 @@ const ClientProviders = ({ children }) => {
         <Toaster />
         {children}
         {/* <SideBarProvider>{children}</SideBarProvider> */}
-        <UserProvider />
       </ThemeProvider>
     </ReactQueryProvider>
   );

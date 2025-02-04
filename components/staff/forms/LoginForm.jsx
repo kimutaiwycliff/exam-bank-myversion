@@ -1,18 +1,16 @@
 'use client';
 import Logo from '@/components/layout/Logo';
-import { UserContext } from '@/components/providers/UserContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { login } from '@/lib/actions/Auth';
 import { useRouter } from 'next/navigation';
-import { useContext, useState } from 'react';
+import {  useState } from 'react';
 
 function LoginForm() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [errors, setErrors] = useState({});
   const [pending, setPending] = useState(false);
   const router = useRouter();
-  const { setUser } = useContext(UserContext);
   const { toast } = useToast();
 
   const handleChange = (e) => {
@@ -35,7 +33,7 @@ function LoginForm() {
       });
     } else {
       const user = result;
-      setUser(user);
+      // setUser(user);
       setErrors({});
       toast({
         variant: 'success',

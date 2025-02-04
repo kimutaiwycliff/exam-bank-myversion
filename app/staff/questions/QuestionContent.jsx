@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getQuestions } from '@/lib/actions/Staff';
 import { questionColumns } from '@/components/tables/components/columns';
 import QuestionForm from '@/components/staff/forms/QuestionForm';
+import FileUploader from '@/components/fileupload/FileUploader';
 const QuestionContent = () => {
   const items = [{ name: 'Questions' }];
   const [active, setActive] = useState('single');
@@ -69,8 +70,8 @@ const QuestionContent = () => {
             )}
             {active === 'extract' && (
               <>
-              <p className="">FIle upload</p>
-                {/* <FileUpload /> */}
+
+                <FileUploader />
               </>
             )}
           </div>
