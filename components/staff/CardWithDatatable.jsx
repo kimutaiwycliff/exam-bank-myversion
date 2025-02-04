@@ -23,10 +23,12 @@ const CardWithTable = ({
   return (
     <>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
-        <BreadCrumbsHeader items={items} />
+        {items && <BreadCrumbsHeader items={items} />}
+
         <Card className=" border-1 sticky w-full">
           <CardHeader className=" py-4 flex flex-row justify-between">
-            <CardTitle className="text-xl">{title}</CardTitle>
+            {title && <CardTitle className="text-xl">{title}</CardTitle>}
+
             {Form && (
               <DialogModal
                 title={title}

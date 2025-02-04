@@ -6,6 +6,7 @@ import { labels, priorities, statuses } from '../data/data';
 import { DataTableRowActions } from './data-table-row-actions';
 import { Badge } from '@/components/ui/badge';
 import SetExamModal from '@/components/staff/SetExamModal';
+import { format } from 'date-fns';
 
 export const columns = [
   {
@@ -579,3 +580,73 @@ export const examColumns = [
     },
   },
 ];
+export const SubjectListViewColumns = [
+  // {
+  //     id: "select",
+  //     header: ({ table }) => (
+  //       <Checkbox
+  //         checked={
+  //           table.getIsAllPageRowsSelected() ||
+  //           (table.getIsSomePageRowsSelected() && "indeterminate")
+  //         }
+  //         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //         aria-label="Select all"
+  //       />
+  //     ),
+  //     cell: ({ row }) => (
+  //       <Checkbox
+  //         checked={row.getIsSelected()}
+  //         onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //         aria-label="Select row"
+  //       />
+  //     ),
+  //     enableSorting: false,
+  //     enableHiding: false,
+  //   },
+  {
+    header: "No.",
+    cell: (info) => info.row.index + 1,
+},
+  {
+      accessorKey: "term",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Term" />
+      ),
+    },
+    {
+      accessorKey: "grade_name",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Class/Grade" />
+      ),
+    },
+    {
+      accessorKey: "exam_type_name",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Exam Type" />
+      ),
+    },
+    {
+      accessorKey: "date_created",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Process Date" />
+      ),
+      cell: ({ cell }) => {
+        const date = new Date(cell.getValue());
+        return format(date, "do MMMM yyyy");
+      },
+    },
+    {
+      id: 'actions',
+      header: () => <div className="pl-4">Actions</div>,
+      cell: ({ row }) => {
+        const set_exam = row.original;
+
+        return (
+          <>
+            <SetExamModal type="subjectListView" set_exam={set_exam} />
+          </>
+        );
+      },
+    },
+
+]
