@@ -8,9 +8,9 @@ export async function GET() {
     // Payload to be encoded in the JWT token
     const payload = {
       user: {
-        username: 'admin',
-        first_name: 'admin',
-        last_name: 'admin',
+        username: 'barney_stinson',
+        first_name: 'Barney',
+        last_name: 'Stinson',
         roles: ['abdul'],
       },
       resources: [
