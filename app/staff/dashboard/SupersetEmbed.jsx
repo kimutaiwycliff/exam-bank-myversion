@@ -3,7 +3,7 @@
 import { embedDashboard } from "@superset-ui/embedded-sdk";
 import { useEffect, useRef, useState } from "react";
 
-const SupersetEmbed = () => {
+export const SupersetEmbedSDK = () => {
   const supersetRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -52,4 +52,15 @@ const SupersetEmbed = () => {
   );
 };
 
-export default SupersetEmbed;
+export const SupersetIframe = () => {
+  return (
+    <div className="w-full h-screen">
+      <iframe
+          src={`http://localhost:8088/superset/dashboard/p/NWznm4NMegl/`}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+    </div>
+  );
+}
