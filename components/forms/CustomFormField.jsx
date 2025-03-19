@@ -1,4 +1,9 @@
 'use client';
+import dynamic from "next/dynamic";
+
+const LexicalEditor = dynamic(() => import("../editor/LexicalEditor"), {
+  ssr: false,
+});
 import { FormFieldTypes } from '@/constants';
 import {
   FormControl,
@@ -122,11 +127,15 @@ const RenderField = ({ field, props }) => {
       return (
         <div className="flex rounded-md border">
           <FormControl>
-            <Textarea
-              placeholder={placeholder}
-              {...field}
-              className="border-0"
-            />
+          <LexicalEditor
+            value={field.value}
+            onChange={(editorState) => {
+              editorState.read(() => {
+                const json = editorState.toJSON();
+                field.onChange(JSON.stringify(json));
+              });
+            }}
+          />
           </FormControl>
         </div>
       );
