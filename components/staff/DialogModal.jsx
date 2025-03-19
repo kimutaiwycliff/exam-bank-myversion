@@ -10,6 +10,7 @@ import {
 } from '../ui/dialog';
 import { CirclePlus } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useRouter } from 'next/navigation';
 
 const DialogModal = ({
   title,
@@ -19,10 +20,11 @@ const DialogModal = ({
   editValues,
 }) => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>
+      {title === 'Questions' && (
+        <Button onClick={() => router.push('/staff/questions/add')}>
           {isEditSession ? (
             `Edit ${title}`
           ) : (
@@ -32,7 +34,21 @@ const DialogModal = ({
             </>
           )}
         </Button>
-      </DialogTrigger>
+      )}
+      {title !== 'Questions' && (
+        <DialogTrigger asChild>
+          <Button>
+            {isEditSession ? (
+              `Edit ${title}`
+            ) : (
+              <>
+                <CirclePlus />
+                Add {title}
+              </>
+            )}
+          </Button>
+        </DialogTrigger>
+      )}
       <DialogContent className="  ">
         <DialogHeader className="mb-1  ">
           <DialogTitle className="capitalize  py-2 rounded-md ">

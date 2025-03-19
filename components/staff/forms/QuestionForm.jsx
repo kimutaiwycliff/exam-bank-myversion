@@ -137,13 +137,13 @@ const QuestionForm = ({ questionToEdit = {}, setOpen }) => {
       name: 'description',
       label: 'Description',
       placeholder: 'Describe the question...',
-      fieldType: FormFieldTypes.TEXTAREA,
+      fieldType: FormFieldTypes.EDITOR,
     },
     {
       name: 'marking_scheme',
       label: 'Marking Scheme',
       placeholder: 'Describe the marking scheme...',
-      fieldType: FormFieldTypes.TEXTAREA,
+      fieldType: FormFieldTypes.EDITOR,
     },
   ];
   const form = useForm({
@@ -210,7 +210,7 @@ function SubmitButton() {
   return (
     <Button
       type="submit"
-      className=" w-full disabled:bg-gray-500"
+      className="   disabled:bg-gray-500"
       disabled={pending}
     >
       {pending ? 'Submitting...' : 'Submit'}
