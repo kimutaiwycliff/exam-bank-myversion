@@ -9,7 +9,7 @@ const ClientProviders = ({ children }) => {
     <ReactQueryProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="light"
         enableSystem
         disableTransitionOnChange
       >

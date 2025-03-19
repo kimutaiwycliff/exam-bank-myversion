@@ -64,14 +64,14 @@ export function DataTable({
         searchLabel={`${searchLabel}`}
         filters={filters}
       />
-      <div className="rounded-md border">
+      <div className="rounded-md border ">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-slate-600 ">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} colSpan={header.colSpan}>
+                    <TableHead key={header.id} colSpan={header.colSpan} className="text-white">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -92,7 +92,7 @@ export function DataTable({
                   data-state={row.getIsSelected() && 'selected'}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

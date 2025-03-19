@@ -22,11 +22,11 @@ const CardWithTable = ({
 }) => {
   return (
     <>
-      <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className="h-full flex-1 flex-col space-y-4 p-8 md:flex">
         {items && <BreadCrumbsHeader items={items} />}
 
         <Card className=" border-1 sticky w-full">
-          <CardHeader className=" py-4 flex flex-row justify-between">
+          <CardHeader className=" py-4 flex flex-row justify-between bg-slate-200 rounded-md">
             {title && <CardTitle className="text-xl">{title}</CardTitle>}
 
             {Form && (
