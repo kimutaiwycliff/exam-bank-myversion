@@ -20,7 +20,7 @@ const NavigationItem = ({ item, isActive }) => (
     <SidebarMenuButton asChild className="rounded-sm">
       <Link
         className={clsx(
-          'py-5 px-10 hover:bg-primary transition-colors flex items-center gap-4 font-semibold',
+          'py-5 px-5 text-lg hover:bg-slate-200 hover:text-slate-600 transition-colors flex items-center gap-4 font-semibold text-blue-100',
           { 'bg-primary': isActive }
         )}
         href={item.href}
@@ -35,13 +35,13 @@ const SideNavigation = () => {
   const pathname = usePathname();
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
+      <SidebarHeader className="bg-slate-700">
         <div className="mx-auto mt-14 w-full">
           <Logo />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="">
+      <SidebarContent  className="bg-slate-700 pt-[1rem]">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="gap-4">
