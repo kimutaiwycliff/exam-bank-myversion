@@ -26,7 +26,7 @@ const QuestionContent = () => {
     <div className="mx-5 my-5">
       <Card className="shadow-md border-0">
         <CardHeader className=" py-1 rounded-sm"></CardHeader>
-        <CardContent className="py-5">
+        <CardContent className="">
           <div className="container flex flex-col mx-auto">
             <div className="flex flex-row space-x-4 border-b-2 mb-3">
               <Button
