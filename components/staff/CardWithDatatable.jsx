@@ -8,13 +8,12 @@ const CardWithTable = ({
   items,
   title,
   columns,
-  data,
+  fetchFunction,
+  queryKey,
+  rest,
   searchColumn,
   searchLabel,
   filters,
-  isLoading,
-  isError,
-  error,
   Form,
   isEditSession,
   editId,
@@ -40,21 +39,15 @@ const CardWithTable = ({
             )}
           </CardHeader>
           <CardContent className="py-5">
-            {isLoading ? (
-              <div className="mx-auto">
-                <SpinningLoader />
-              </div>
-            ) : isError ? (
-              <p className="text-red-500">Error: {error.message}</p>
-            ) : (
-              <DataTable
-                data={data}
-                columns={columns}
-                searchColumn={searchColumn}
-                searchLabel={searchLabel}
-                filters={filters}
-              />
-            )}
+            <DataTable
+              fetchFunction={fetchFunction}
+              queryKey={queryKey}
+              rest={rest}
+              columns={columns}
+              searchColumn={searchColumn}
+              searchLabel={searchLabel}
+              filters={filters}
+            />
           </CardContent>
         </Card>
       </div>
