@@ -17,12 +17,12 @@ const ExamCard = ({ title, count, filter }) => {
 
   return (
     <Card
-      className="hover:cursor-pointer shadow-md border-0 flex justify-center items-center bg-primary/70 hover:bg-primary rounded-md"
+      className="hover:cursor-pointer shadow-md border-0 flex justify-center items-center bg-slate-700 hover:bg-slate-500 text-white rounded-md"
       onClick={() => handleFilter(filter?.toLowerCase().replace(' ', '-'))}
     >
       <CardContent className="py-4">
-        <h2 className="tracking-wide font-bold text-lg">{title}</h2>
-        <p className="tracking-wide font-semibold text-lg">Count: {count}</p>
+        <h2 className="tracking-wide font-bold text-md">{title}</h2>
+        <p className="tracking-wide font-semibold text-md">Count: {count}</p>
       </CardContent>
     </Card>
   );

@@ -10,10 +10,10 @@ const ExamPageClient = ({ examsCounter, exams }) => {
   const items = [{ name: "Exams" }];
   return (
     <div>
-    <BreadCrumbsHeader items={items} />
+    <BreadCrumbsHeader items={items} containerClass={'pt-10 pl-7'}/>
     <div className="p-5 px-10">
       <Card className="shadow-md border-0">
-        <CardHeader className=" py-4">
+        <CardHeader className="bg-slate-200 py-4">
           <CardTitle className="text-xl">Exams</CardTitle>
         </CardHeader>
         <CardContent className="py-5">
