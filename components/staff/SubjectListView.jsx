@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import CardWithTable from './CardWithDatatable';
 import { SubjectListViewColumns } from '../tables/components/columns';
 
-const SubjectListView = ({ data, isLoading, isError, error }) => {
+const SubjectListView = ({ data, fetchFunction, queryKey, rest, isLoading}) => {
   const items = [
     { name: 'Exams', url: '/staff/exams' },
     { name: 'Exam Papers', url: '/staff/exams/examtype' },
@@ -18,7 +18,7 @@ const SubjectListView = ({ data, isLoading, isError, error }) => {
 
   return (
     <div>
-      <BreadCrumbsHeader items={items} />
+      <BreadCrumbsHeader items={items} containerClass={'pt-5 pl-7'}/>
       <div className="p-5 px-10">
         <Card className="shadow-md border">
           <CardHeader className=" py-2 ">
@@ -42,12 +42,11 @@ const SubjectListView = ({ data, isLoading, isError, error }) => {
             ) : (
               <CardWithTable
                 columns={SubjectListViewColumns}
-                data={data}
+                fetchFunction={fetchFunction}
+                queryKey={queryKey}
+                rest={rest}
                 searchColumn="term"
                 searchLabel="Term"
-                isLoading={isLoading}
-                isError={isError}
-                error={error}
                 // Form={GradeForm}
               />
             )}
