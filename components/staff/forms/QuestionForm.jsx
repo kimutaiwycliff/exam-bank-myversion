@@ -19,7 +19,9 @@ import CustomFormField from '@/components/forms/CustomFormField';
 import { Form } from '@/components/ui/form';
 import { useEffect, useState } from 'react';
 import { FormFieldTypes } from '@/constants';
-const QuestionForm = ({ questionToEdit = {}, setOpen }) => {
+import { useRouter } from 'next/navigation';
+const QuestionForm = ({ questionToEdit = {} }) => {
+  const router = useRouter();
   const { toast } = useToast();
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -167,7 +169,7 @@ const QuestionForm = ({ questionToEdit = {}, setOpen }) => {
           : 'Question created successfully!',
       });
       queryClient.invalidateQueries(['questions']);
-      setOpen(false);
+      router.push('/staff/questions');
     },
     onError: (error) => {
       toast({
