@@ -15,9 +15,9 @@ const PreviewPage = ({ exam_details, isLoading }) => {
   ];
   return (
     <div className="px-10">
-      <BreadCrumbsHeader items={items} />
+      <BreadCrumbsHeader items={items} containerClass={'pt-5 '}/>
       <Card className="shadow-md border-0 mt-3 rounded-lg">
-        <CardHeader className="flex flex-row justify-between  py-1 rounded-sm">
+        <CardHeader className="flex flex-row justify-between  bg-slate-200 py-1 rounded-sm">
           <Button variant="ghost" className=" font-bold text-md mt-1">
             {exam_details?.exam_name}
           </Button>

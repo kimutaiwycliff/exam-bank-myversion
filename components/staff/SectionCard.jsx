@@ -13,7 +13,7 @@ const SectionCard = ({ section, show = false }) => {
   };
   return (
     <>
-      <CardHeader className=" py-1 rounded-md flex flex-row items-center justify-between min-h-[50px] max-h-[50px] mt-2">
+      <CardHeader className=" bg-gray-200 py-1 rounded-md flex flex-row items-center justify-between min-h-[50px] max-h-[50px] mt-2">
         <div className=" flex-1 text-center">
           <CardTitle className="text-lg font-bold">
             <p className=" font-bold capitalize">

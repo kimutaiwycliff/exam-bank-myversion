@@ -128,13 +128,13 @@ const SetExamPage = ({ status, exam_details }) => {
   };
   return (
     <div>
-      <BreadCrumbsHeader items={items} />
+      <BreadCrumbsHeader items={items} containerClass={'pt-10 pl-5'}/>
       <div className="p-5 px-10">
         <Card className="shadow-md border-0 mb-4">
           {status === 'unprocessed' && (
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit, onError)}>
-                <CardHeader className=" py-2">
+                <CardHeader className="bg-slate-200 py-2">
                   <CardTitle className="text-lg flex flex-row justify-between">
                     <Button className="text-xl font-semibold" variant="ghost">
                       Set Exam Paper
@@ -211,7 +211,7 @@ const SetExamPage = ({ status, exam_details }) => {
           )}
           {status === 'processed' && (
             <>
-              <CardHeader className=" py-2">
+              <CardHeader className="bg-slate-200 py-2">
                 <CardTitle className="text-lg flex flex-row justify-between">
                   <Button className="text-lg font-semibold" variant="ghost">
                     Edit Exam Paper
@@ -293,14 +293,14 @@ const SetExamPage = ({ status, exam_details }) => {
           {status === 'processed' && (
             <>
               <div className="mx-4 border border-primary/75 rounded-md ">
-                <CardHeader className="py-1 rounded-md mb-2">
+                <CardHeader className="bg-slate-200 py-1 rounded-md mb-2">
                   <CardTitle className="text-lg flex flex-row justify-between">
                     <Button className="text-lg font-extrabold" variant="ghost">
                       {exam_details?.exam_name} Questions
                     </Button>
                   </CardTitle>
                 </CardHeader>
-                <CardHeader className=" py-1 mb-2 min-h-[80px]">
+                <CardHeader className="bg-gray-100 py-1 mb-2 min-h-[80px]">
                   <div className="mx-3 flex flex-row my-auto">
                     {exam_details?.sections.map((section, index) => (
                       <Button
@@ -345,7 +345,7 @@ const SetExamPage = ({ status, exam_details }) => {
                   selectedSection && (
                     <div className="mt-3">
                       <div className="bg-green-50 mx-4 py-3 rounded-none mb-4">
-                        <p className="text-green-600 font-bold mx-5">
+                        <p className="text-green-600 text-sm font-bold mx-5">
                           You can change any loaded question with different
                           question of the same marks
                         </p>
@@ -402,7 +402,7 @@ const SetExamPage = ({ status, exam_details }) => {
 export const SelectionField = ({ label, value, isLoading }) => (
   <div className="max-w-[400px] flex flex-col space-y-2">
     <p className="text-md  font-semibold">{label}</p>
-    <div className="rounded-md border border-primary py-2 ">
+    <div className="rounded-md border border-primary py-2 bg-gray-100 ">
       {isLoading ? <SkeletonMini /> : <p className="mx-5">{value}</p>}
     </div>
   </div>
