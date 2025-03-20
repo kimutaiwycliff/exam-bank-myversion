@@ -1,5 +1,4 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
 import { usersColumns } from '@/components/tables/components/columns';
 import { sentenceCase } from '@/lib/utils';
 import { getUsers } from '@/lib/actions/Staff';
@@ -14,28 +13,16 @@ const Page = ({ params: { userType } }) => {
     ...defaultItems,
     ...(userType ? [{ name: label }] : []),
   ];
-
-  // Fetch users using React Query
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['users', userType], // Cache key includes userType to refetch when it changes
-    queryFn: async () => {
-      const { results } = await getUsers(userType);
-      return results;
-    },
-    staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
-  });
-
   return (
     <CardWithTable
       items={updatedItems}
       title="Users"
       columns={usersColumns}
-      data={data}
+      fetchFunction={getUsers}
+      queryKey={{ userType }}
+      rest={{ userType }}
       searchColumn="name"
       searchLabel="Name"
-      isLoading={isLoading}
-      isError={isError}
-      error={error}
       Form={StaffForm}
     />
   );

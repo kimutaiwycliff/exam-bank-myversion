@@ -2,7 +2,7 @@
 import CardWithTable from '@/components/staff/CardWithDatatable';
 import TopicForm from '@/components/staff/forms/TopicForm';
 import { objectiveColumns } from '@/components/tables/components/columns';
-import { getObjectives, getSubtopic, getTopic } from '@/lib/actions/Staff';
+import { getObjectives, getSubtopic } from '@/lib/actions/Staff';
 import { useQuery } from '@tanstack/react-query';
 const Page = () => {
   const { subtopicId } = params;
@@ -16,14 +16,6 @@ const Page = () => {
     },
     staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
   });
-  const { data, isLoading, isError, error } = useQuery({
-      queryKey: ['objectives'], // Cache key includes userType to refetch when it changes
-      queryFn: async () => {
-        const { results } = await getObjectives({ pageIndex: 0 });
-        return results;
-      },
-      staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
-    });
   const nameLowerCase = sentenceCase(name);
 
   return (
@@ -31,12 +23,10 @@ const Page = () => {
       items={[...items, { name: nameLowerCase }]}
       title={`${nameLowerCase} Objectives`}
       columns={objectiveColumns}
-      data={data}
+      fetchFunction={getObjectives}
+      queryKey={'objectives'}
       searchColumn="description"
       searchLabel="Description"
-      isLoading={isLoading}
-      isError={isError}
-      error={error}
       Form={TopicForm}
     />
   );
