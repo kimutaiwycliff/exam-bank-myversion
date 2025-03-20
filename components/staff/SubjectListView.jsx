@@ -11,8 +11,8 @@ const SubjectListView = ({ data, fetchFunction, queryKey, rest, isLoading}) => {
     { name: 'Exams', url: '/staff/exams' },
     { name: 'Exam Papers', url: '/staff/exams/examtype' },
     {
-      name: `${capitalizeFirstLetter(data?.subject_name)}`,
-      url: `/staff/exams/examtype/${data?.id}`,
+      name: `${capitalizeFirstLetter(data?.[0]?.subject_name)}`,
+      url: `/staff/exams/examtype/${data?.[0]?.id}`,
     },
   ];
 
@@ -21,15 +21,12 @@ const SubjectListView = ({ data, fetchFunction, queryKey, rest, isLoading}) => {
       <BreadCrumbsHeader items={items} containerClass={'pt-5 pl-7'}/>
       <div className="p-5 px-10">
         <Card className="shadow-md border">
-          <CardHeader className=" py-2 ">
-            <CardTitle className="text-lg">Exam Papers </CardTitle>
-          </CardHeader>
-          <CardHeader className=" py-2 mx-3 rounded-lg">
-            {data?.subject_name && (
+          <CardHeader className=" bg-slate-200 py-2 rounded-lg">
+            {data?.[0]?.subject_name && (
               <CardTitle className="text-lg">
                 {' '}
                 {`${capitalizeFirstLetter(
-                  data?.subject_name
+                  data?.[0]?.subject_name
                 )} Exam Papers`}{' '}
               </CardTitle>
             )}

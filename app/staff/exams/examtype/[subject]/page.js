@@ -12,7 +12,7 @@ const SubjectListPage = ({ params }) => {
     error,
     isLoading,
   } = useQuery({
-    queryKey: ['SubjectListView'],
+    queryKey: [subject],
     queryFn: () =>
       getSubjectDetails(subject)
         .then((res) => res?.results)
@@ -32,7 +32,7 @@ const SubjectListPage = ({ params }) => {
         isLoading={isLoading}
         data={subject_details}
         fetchFunction={getSubjectDetails}
-        queryKey={'SubjectListView'}
+        queryKey={subject}
         rest={subject}
       />
     </div>
