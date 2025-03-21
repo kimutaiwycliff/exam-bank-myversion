@@ -1,21 +1,22 @@
 'use client';
-import Logo from '@/components/layout/Logo';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { login } from '@/lib/actions/Auth';
-import { useRouter } from 'next/navigation';
-import {  useState } from 'react';
+import Logo from '@/components/layout/Logo';
+import { Eye, EyeOff } from 'lucide-react';
 
-function LoginForm() {
+export default function LoginForm() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [errors, setErrors] = useState({});
   const [pending, setPending] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -26,76 +27,62 @@ function LoginForm() {
 
     if (result?.errors) {
       setErrors(result.errors);
-      toast({
-        variant: 'destructive',
-        title: 'Login failed',
-        description: 'Invalid username or password',
-      });
+      toast({ variant: 'destructive', title: 'Login failed', description: 'Invalid credentials' });
     } else {
-      const user = result;
-      // setUser(user);
-      setErrors({});
-      toast({
-        variant: 'success',
-        title: 'Login successful',
-        description: 'You are now logged in',
-      });
-      router.push('/staff/grades');
+      toast({ variant: 'success', title: 'Login successful', description: 'Redirecting...' });
+      router.replace('/staff/grades'); // Use replace to prevent back-navigation
     }
-
     setPending(false);
   };
-  return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
-        <div className=" mx-auto rounded-xl  ">
-          <Logo />
-        </div>
 
-        <div>
-          <h3 className="font-bold text-xl ">USER LOGIN</h3>
-          <label htmlFor="username" className="text-md ">
-            Username
-          </label>
-          <input
-            id="username"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-            className="p-2  w-full border-2 border-primary rounded-lg hover:ring-2 focus:ring-1"
-          />
-        </div>
-        {errors?.username && <p className="text-red-500">{errors.username}</p>}
-        <div>
-          <label htmlFor="password" className="text-md">
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="********"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            className="p-2  w-full border-2 border-primary rounded-lg hover:ring-2 focus:ring-1"
-          />
-        </div>
-        {errors?.password && <p className="text-red-500">{errors.password}</p>}
-        <SubmitButton pending={pending} />
-      </form>
-    </div>
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <div className="mx-auto">
+        <Logo />
+      </div>
+
+      {/* <h3 className="text-xl font-bold text-center">USER LOGIN</h3> */}
+
+      <div className="flex flex-col">
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          name="username"
+          placeholder="Enter your username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          autoFocus
+          className="p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+        />
+        {errors.username && <p className="text-red-500">{errors.username}</p>}
+      </div>
+
+      <div className="flex flex-col relative">
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type={showPassword ? 'text' : 'password'}
+          placeholder="********"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          className="p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+        />
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute right-3 top-9 text-gray-500 hover:text-gray-700"
+        >
+          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+        </button>
+        {errors.password && <p className="text-red-500">{errors.password}</p>}
+      </div>
+
+      <Button type="submit" disabled={pending} className="py-2 rounded-lg">
+        {pending ? 'Logging in...' : 'Login'}
+      </Button>
+    </form>
   );
 }
-
-function SubmitButton({ pending }) {
-  return (
-    <Button disabled={pending} type="submit" className="  py-2 rounded-xl">
-      {pending ? 'Logging in...' : 'Login'}
-    </Button>
-  );
-}
-
-export default LoginForm;

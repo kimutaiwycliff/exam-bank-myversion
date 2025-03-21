@@ -1,28 +1,23 @@
 import LoginForm from "./forms/LoginForm";
 
-const LoginPage = () => {
+export default function LoginPage() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-slate-600 to-slate-300 p-5">
-      <div className="w-full max-w-4xl md:grid md:grid-cols-2 rounded-lg shadow-lg backdrop-blur-md bg-opacity-80 border border-slate-600 z-20 hover:border-primary transition-all duration-500 ease-out transform scale-100">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-slate-700 to-slate-400 p-5">
+      <div className="w-full max-w-4xl md:grid md:grid-cols-2 rounded-lg shadow-xl bg-white bg-opacity-90 border border-gray-500 transition-transform duration-500 transform hover:scale-105">
+
         {/* Left-side Information Panel */}
-        <div className="hidden md:flex justify-center items-center bg-slate-600 bg-opacity-80 text-white p-5 rounded-l-lg transition-all duration-700 ease-out transform translate-x-0 opacity-100">
-          <div className="flex flex-col space-y-8 px-5 text-center">
-            <h3 className="font-extrabold tracking-wide text-2xl">
-              Welcome to <br /> The Achievers Focus
-            </h3>
-            <p className="tracking-wide font-light italic">
-              Achievers Focus empowers educators in their fundamental mission of optimizing student achievements
-            </p>
-          </div>
+        <div className="hidden md:flex flex-col justify-center items-center bg-gradient-to-r from-slate-800 to-slate-600 text-white p-6 rounded-l-lg text-center">
+          <h3 className="text-2xl font-extrabold">Welcome to The Achievers Focus</h3>
+          <p className="mt-4 text-lg font-light italic">
+            Empowering educators in their mission to optimize student achievements.
+          </p>
         </div>
 
         {/* Right-side Login Form */}
-        <div className="p-5 md:py-10 rounded-r-lg shadow-md transition-all duration-700 ease-out transform translate-x-0 opacity-100">
+        <div className="p-6 md:py-12 rounded-r-lg shadow-md">
           <LoginForm />
         </div>
       </div>
     </div>
   );
-};
-
-export default LoginPage;
+}
