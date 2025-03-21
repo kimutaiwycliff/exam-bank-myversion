@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/table';
 import { DataTablePagination } from './data-table-pagination';
 import { useQuery } from '@tanstack/react-query';
-import SpinningLoader from '@/components/loaders/SpinningLoader';
+import { SkeletonDemo } from '@/components/loaders/SpinningLoader';
 
 export function DataTable({
   columns,
@@ -81,9 +81,9 @@ export function DataTable({
   return (
     <div className="">
       {isLoading ? (
-        <div className="mx-auto">
-          <SpinningLoader />
-        </div>
+        <div className="flex justify-center items-center h-24">
+        <SkeletonDemo />
+      </div>
       ) : isError ? (
         <p className="text-red-500">Error: {error.message}</p>
       ) : (
