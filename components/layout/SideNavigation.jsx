@@ -11,12 +11,14 @@ import {
   SidebarMenuItem,
 } from '../ui/sidebar';
 import { usePathname } from 'next/navigation';
-import { navLinks } from '@/constants';
+import { useCallback, useMemo, memo } from 'react';
 import dynamic from 'next/dynamic';
 const Logo = dynamic(() => import('@/components/layout/Logo'), { ssr: false });
 import clsx from 'clsx';
+import { navLinks } from '@/constants';
 
-const NavigationItem = ({ item, isActive }) => (
+// Memoized Navigation Item to prevent unnecessary re-renders
+const NavigationItem = memo(({ item, isActive }) => (
   <SidebarMenuItem>
     <SidebarMenuButton asChild className="rounded-sm">
       <Link
@@ -31,9 +33,19 @@ const NavigationItem = ({ item, isActive }) => (
       </Link>
     </SidebarMenuButton>
   </SidebarMenuItem>
-);
+));
+
+NavigationItem.displayName = "NavigationItem";
+
 const SideNavigation = () => {
   const pathname = usePathname();
+
+  // Memoize navLinks to avoid unnecessary re-renders
+  const memoizedNavLinks = useMemo(() => navLinks, []);
+
+  // Memoize isActive function to avoid re-creating it on every render
+  const isActive = useCallback((href) => pathname.includes(href), [pathname]);
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="bg-slate-700">
@@ -42,15 +54,15 @@ const SideNavigation = () => {
         </div>
       </SidebarHeader>
 
-      <SidebarContent  className="bg-slate-700 pt-[1rem]">
+      <SidebarContent className="bg-slate-700 pt-[1rem]">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="gap-4">
-              {navLinks.map((item) => (
+              {memoizedNavLinks.map((item) => (
                 <NavigationItem
                   key={item.name}
                   item={item}
-                  isActive={pathname.includes(item.href)}
+                  isActive={isActive(item.href)}
                 />
               ))}
             </SidebarMenu>
@@ -60,4 +72,5 @@ const SideNavigation = () => {
     </Sidebar>
   );
 };
+
 export default SideNavigation;
