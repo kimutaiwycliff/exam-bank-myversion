@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+/* eslint-disable react-hooks/exhaustive-deps */
 import type { Cell } from "@lexical/table";
 import type { LexicalEditor } from "lexical";
 
