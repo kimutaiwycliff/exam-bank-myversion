@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { login } from '@/lib/actions/Auth';
-import Logo from '@/components/layout/Logo';
+import dynamic from 'next/dynamic';
+const Logo = dynamic(() => import('@/components/layout/Logo'), { ssr: false });
 import { Eye, EyeOff } from 'lucide-react';
 
 export default function LoginForm() {

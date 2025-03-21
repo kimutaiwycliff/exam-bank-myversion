@@ -12,7 +12,8 @@ import {
 } from '../ui/sidebar';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/constants';
-import Logo from './Logo';
+import dynamic from 'next/dynamic';
+const Logo = dynamic(() => import('@/components/layout/Logo'), { ssr: false });
 import clsx from 'clsx';
 
 const NavigationItem = ({ item, isActive }) => (
