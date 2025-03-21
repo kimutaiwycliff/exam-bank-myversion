@@ -1,0 +1,7 @@
+version: "3.5"
+
+services:
+  exam_frontend:
+    build: .
+    ports:
+      - "3000:3000"
