@@ -3,8 +3,9 @@ import CardWithTable from '@/components/staff/CardWithDatatable';
 import TopicForm from '@/components/staff/forms/TopicForm';
 import { objectiveColumns } from '@/components/tables/components/columns';
 import { getObjectives, getSubtopic } from '@/lib/actions/Staff';
+import { sentenceCase } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
-const Page = () => {
+const Page = ({params}) => {
   const { subtopicId } = params;
   const items = [{ name: "Subtopics", url: "/staff/subtopics" }];
   // Fetch users using React Query

@@ -8,7 +8,8 @@ import SectionCard from '@/components/staff/SectionCard';
 import SetExamModal from '@/components/staff/SetExamModal';
 import { setExamColumns } from '@/components/tables/components/columns';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Form } from '@/components/ui/form';
 import { FormFieldTypes } from '@/constants';
 import { useToast } from '@/hooks/use-toast';
 import {
@@ -24,7 +25,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Form, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 const SetExamPage = ({ status, exam_details }) => {
   const { toast } = useToast();

@@ -45,6 +45,7 @@ import Placeholder from '../ui/Placeholder';
 import Select from '../ui/Select';
 import TextInput from '../ui/TextInput';
 import {$isInlineImageNode, InlineImageNode} from './InlineImageNode';
+import Image from 'next/image';
 
 const imageCache = new Set();
 
@@ -80,7 +81,7 @@ function LazyImage({
 }): JSX.Element {
   useSuspenseImage(src);
   return (
-    <img
+    <Image
       className={className || undefined}
       src={src}
       alt={altText}

@@ -57,6 +57,7 @@ import ContentEditable from "../ui/ContentEditable";
 import ImageResizer from "../ui/ImageResizer";
 import Placeholder from "../ui/Placeholder";
 import { $isImageNode } from "./ImageNode";
+import Image from "next/image";
 
 const imageCache = new Set();
 
@@ -95,7 +96,7 @@ function LazyImage({
 }): JSX.Element {
   useSuspenseImage(src);
   return (
-    <img
+    <Image
       className={className || undefined}
       src={src}
       alt={altText}
