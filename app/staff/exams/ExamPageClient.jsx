@@ -17,15 +17,6 @@ const ExamPageClient = () => {
     staleTime: 5 * 60 * 1000,
   });
 
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center h-24">
-        <SkeletonDemo />
-      </div>
-    );
-  if (isError)
-    return <div className="text-red-500">Error: {error.message}</div>;
-
   return (
     <div>
       <BreadCrumbsHeader
@@ -37,23 +28,31 @@ const ExamPageClient = () => {
           <CardHeader className="bg-slate-200 py-4">
             <CardTitle className="text-xl">Exams</CardTitle>
           </CardHeader>
-          <CardContent className="py-5">
-            <div className="grid grid-cols-3 gap-4">
-              <ExamCard
-                filter="all"
-                title="Exam Papers"
-                count={data?.total_count}
-              />
-              {data?.grouped_data?.map((exam, index) => (
-                <ExamCard
-                  key={index}
-                  filter={exam?.exam_type}
-                  title={exam?.exam_type}
-                  count={exam?.count}
-                />
-              ))}
+          {isLoading ? (
+            <div className="flex justify-center items-center h-24">
+              <SkeletonDemo />
             </div>
-          </CardContent>
+          ) : isError ? (
+            <div className="text-red-500">Error: {error.message}</div>
+          ) : (
+            <CardContent className="py-5">
+              <div className="grid grid-cols-3 gap-4">
+                <ExamCard
+                  filter="all"
+                  title="Exam Papers"
+                  count={data?.total_count}
+                />
+                {data?.grouped_data?.map((exam, index) => (
+                  <ExamCard
+                    key={index}
+                    filter={exam?.exam_type}
+                    title={exam?.exam_type}
+                    count={exam?.count}
+                  />
+                ))}
+              </div>
+            </CardContent>
+          )}
         </Card>
       </div>
     </div>
