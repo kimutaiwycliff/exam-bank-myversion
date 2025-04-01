@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import BreadCrumbsHeader from '../layout/BreadCrumbsHeader';
 import SpinningLoader from '../loaders/SpinningLoader';
 import { DataTable } from '../tables/components/data-table';
@@ -18,15 +19,17 @@ const CardWithTable = ({
   isEditSession,
   editId,
   editValues,
+  cardHeaderClass,
+  mainDivClass
 }) => {
   return (
     <>
-      <div className="h-full flex-1 flex-col space-y-4 p-8 md:flex">
+      <div className={cn("h-full flex-1 flex-col space-y-4 p-8 md:flex", mainDivClass)}>
         {items && <BreadCrumbsHeader items={items} />}
 
         <Card className=" border-1 sticky w-full">
-          <CardHeader className=" py-4 flex flex-row justify-between bg-slate-200 rounded-md">
-            {title && <CardTitle className="text-xl">{title}</CardTitle>}
+          <CardHeader className={cn('py-4 flex flex-row justify-between bg-slate-200 rounded-md text-xl', cardHeaderClass)}>
+            {title && <CardTitle className="">{title}</CardTitle>}
 
             {Form && (
               <DialogModal

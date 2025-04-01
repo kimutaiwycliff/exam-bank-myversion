@@ -26,4 +26,25 @@ const AnimatedButton = ({ id, title, rightIcon, leftIcon, containerClass }) => {
   );
 };
 
+export const CounterButton = ({ label, count, isActive, onClick }) => {
+  return (
+    <div className="relative flex flex-col items-center">
+      <Button
+        className={`text-sm rounded-none min-w-[200px] flex items-center justify-center ${
+          isActive ? "border-b-2 border-primary text-primary" : "text-gray-500 "
+        }`}
+        variant="ghost"
+        onClick={onClick}
+      >
+        {label}
+      </Button>
+      {count !== null && (
+        <span className="absolute top-[-5px] right-[-5px] bg-blue-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center z-30">
+          {count}
+        </span>
+      )}
+    </div>
+  );
+};
+
 export default AnimatedButton;

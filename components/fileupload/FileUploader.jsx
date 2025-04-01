@@ -1,13 +1,15 @@
 'use client';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { FileUpload } from './file-upload';
 import SpinningLoader from '../loaders/SpinningLoader';
-import { getSubjects } from '@/lib/actions/Staff';
+import { getQuestions, getSubjects } from '@/lib/actions/Staff';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import CardWithTable from '../staff/CardWithDatatable';
+import { questionColumns } from '../tables/components/columns';
 
 const UploadStatus = {
   Idle: 'idle',
@@ -103,34 +105,38 @@ const FileUploader = () => {
     setResetKey((prevKey) => prevKey + 1);
   };
   return (
-    <div className="px-2">
+    <div className="pt-10">
       <Card className="shadow-md border-0">
-        <CardHeader className=" py-2 rounded-md flex flex-row justify-end">
-          <Button className=" ">Process Questions</Button>
+        <CardHeader className=" py-1 bg-slate-200 rounded-md flex flex-row justify-between items-center">
+          <Button
+            variant="ghost"
+            className="font-semibold text-md hover:bg-slate-200 pr-5"
+          >
+            Extract Questions
+          </Button>
+          <Button className="text-sm">Process Questions</Button>
         </CardHeader>
         <CardContent className="py-5">
           <div className="container flex flex-col max-w-7xl mx-auto">
-            <div className="flex flex-row space-x-4 border-b-2 mb-5">
+            <div className="flex flex-row  border-b-2 mb-5">
               <Button
-                className={`text-md rounded-none font-semibold min-w-[200px] ${activeButton === 'extract' ? 'border-b-2 border-primary ' : 'border-b-2 border-transparent'}`}
+                className={`text-md rounded-none  min-w-[200px] ${activeButton === 'extract' ? 'border-b-2 border-primary text-primary ' : 'border-b-2 border-transparent'}`}
                 variant="ghost"
                 onClick={() => handleButtonClick('extract')}
               >
                 Extract Questions
               </Button>
               <Button
-                className={`text-md rounded-none font-semibold min-w-[200px] ${activeButton === 'questions' ? 'border-b-2 border-primary ' : 'border-b-2 border-transparent'}`}
+                className={`text-md rounded-none min-w-[200px] ${activeButton === 'questions' ? 'border-b-2 border-primary text-primary' : 'border-b-2 border-transparent'}`}
                 variant="ghost"
                 onClick={() => handleButtonClick('questions')}
               >
-                Questions
+                Extracted Questions
               </Button>
             </div>
             {activeButton === 'extract' && (
               <div className="mb-8 flex flex-col space-y-3">
-                <label className="text-md font-semibold ">
-                  Select Subject
-                </label>
+                <label className="text-md font-semibold ">Select Subject</label>
                 <select
                   value={selectedSubject}
                   onChange={handleSubjectChange}
@@ -193,22 +199,16 @@ const FileUploader = () => {
             )}
             {activeButton === 'questions' && (
               <>
-                <Card className="shadow-md border min-h-[600px]">
-                  <CardHeader className=" py-2 rounded-sm mb-4">
-                    <CardTitle className="text-md font-semibold">
-                      Agriculture Extracted Questions
-                    </CardTitle>
-                  </CardHeader>
-                  <CardHeader className="bg-green-100 py-2 mx-2 rounded-sm mb-4">
-                    <CardTitle className="text-sm font-semibold">
-                      <p className="text-green-800">
-                        Unless you add the questions to the QUESTION BANK, you
-                        will not be able to access them when setting the exam
-                        paper.
-                      </p>
-                    </CardTitle>
-                  </CardHeader>
-                </Card>
+                <CardWithTable
+                  title="Biology Questions"
+                  columns={questionColumns}
+                  fetchFunction={getQuestions}
+                  queryKey="questions"
+                  searchColumn="subject_name"
+                  searchLabel="Subject"
+                  cardHeaderClass={'py-2 items-center text-md'}
+                  mainDivClass={'p-0 pt-5'}
+                />
               </>
             )}
           </div>
