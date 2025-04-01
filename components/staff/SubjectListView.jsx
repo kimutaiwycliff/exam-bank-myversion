@@ -44,6 +44,7 @@ const SubjectListView = ({ data, fetchFunction, queryKey, rest, isLoading}) => {
                 rest={rest}
                 searchColumn="term"
                 searchLabel="Term"
+                mainDivClass={'px-0'}
                 // Form={GradeForm}
               />
             )}

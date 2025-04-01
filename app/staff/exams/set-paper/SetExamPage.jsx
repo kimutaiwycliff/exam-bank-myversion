@@ -8,7 +8,13 @@ import SectionCard from '@/components/staff/SectionCard';
 import SetExamModal from '@/components/staff/SetExamModal';
 import { setExamColumns } from '@/components/tables/components/columns';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Form } from '@/components/ui/form';
 import { FormFieldTypes } from '@/constants';
 import { useToast } from '@/hooks/use-toast';
@@ -23,6 +29,7 @@ import { examSchema } from '@/lib/schemas';
 import { capitalizeFirstLetter, extractQuestion } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -128,10 +135,10 @@ const SetExamPage = ({ status, exam_details }) => {
     mutation.mutate(data);
   };
   return (
-    <div>
-      <BreadCrumbsHeader items={items} containerClass={'pt-10 pl-5'}/>
+    <div className="bg-slate-50">
+      <BreadCrumbsHeader items={items} containerClass={'pt-5 pl-5'} />
       <div className="p-5 px-10">
-        <Card className="shadow-md border-0 mb-4">
+        <Card className="shadow-md border-0 mb-4 rounded-md">
           {status === 'unprocessed' && (
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit, onError)}>
@@ -212,9 +219,9 @@ const SetExamPage = ({ status, exam_details }) => {
           )}
           {status === 'processed' && (
             <>
-              <CardHeader className="bg-slate-200 py-2">
-                <CardTitle className="text-lg flex flex-row justify-between">
-                  <Button className="text-lg font-semibold" variant="ghost">
+              <CardHeader className="bg-slate-200 py-2 rounded-md">
+                <CardTitle className="text-md flex flex-row justify-between">
+                  <Button className="text-md font-semibold" variant="ghost">
                     Edit Exam Paper
                   </Button>
                   <Button>Process Paper</Button>
@@ -293,24 +300,25 @@ const SetExamPage = ({ status, exam_details }) => {
           )}
           {status === 'processed' && (
             <>
-              <div className="mx-4 border border-primary/75 rounded-md ">
-                <CardHeader className="bg-slate-200 py-1 rounded-md mb-2">
-                  <CardTitle className="text-lg flex flex-row justify-between">
-                    <Button className="text-lg font-extrabold" variant="ghost">
-                      {exam_details?.exam_name} Questions
-                    </Button>
-                  </CardTitle>
+              <div className="mx-4 border border-gray-300 rounded-md mt-5 ">
+                <CardHeader className="bg-slate-200 py-1 rounded-md mb-2 flex flex-row items-start">
+                  <Button
+                    className=" font-semibold hover:bg-slate-200"
+                    variant="ghost"
+                  >
+                    {exam_details?.exam_name} Questions
+                  </Button>
                 </CardHeader>
                 <CardHeader className="bg-gray-100 py-1 mb-2 min-h-[80px]">
-                  <div className="mx-3 flex flex-row my-auto">
+                  <div className=" flex flex-row my-auto">
                     {exam_details?.sections.map((section, index) => (
                       <Button
                         key={index}
-                        className={`text-md font-semibold rounded-none  border border-primary/75 h-[60px] w-[200px] ${
+                        className={`font-semibold rounded-sm  border border-gray-300 h-[50px] w-[180px] ${
                           selectedSection?.name === section?.name &&
                           !isPreviewMode
-                            ? 'bg-primary'
-                            : 'bg-secondary text-primary hover:bg-primary/80 hover:text-secondary  '
+                            ? 'bg-slate-700 hover:bg-slate-600'
+                            : 'bg-white text-slate-700 hover:bg-slate-400  '
                         }`}
                         onClick={() => {
                           setSelectedSection(section);
@@ -322,10 +330,10 @@ const SetExamPage = ({ status, exam_details }) => {
                     ))}
                     {exam_details?.sections.length !== 0 && (
                       <Button
-                        className={`text-md font-semibold rounded-none border border-primary/75 h-[60px] w-[200px] ${
+                        className={`font-semibold rounded-sm border border-gray-300 h-[50px] w-[180px] ${
                           isPreviewMode
-                            ? 'bg-primary'
-                            : ' bg-secondary text-primary hover:bg-primary/80 hover:text-secondary'
+                            ? 'bg-slate-700 hover:bg-slate-600'
+                            : ' bg-white text-slate-700 hover:bg-slate-400'
                         }`}
                         onClick={() => setIsPreviewMode(true)}
                       >
@@ -346,15 +354,15 @@ const SetExamPage = ({ status, exam_details }) => {
                   selectedSection && (
                     <div className="mt-3">
                       <div className="bg-green-50 mx-4 py-3 rounded-none mb-4">
-                        <p className="text-green-600 text-sm font-bold mx-5">
+                        <p className="text-green-600 text-xs font-bold mx-5">
                           You can change any loaded question with different
                           question of the same marks
                         </p>
                       </div>
-                      <div className="border border-primary/75 mx-4 max-h-[400px] mb-3">
-                        <div className="border border-primary/75 flex justify-end min-h-[55px]">
+                      <div className="border border-gray-300 mx-4 max-h-[400px] mb-3">
+                        <div className="border border-gray-300 flex justify-end min-h-[55px]">
                           <Button
-                            className=" font-bold border border-primary/85 my-auto mx-10 w-[120px]"
+                            className=" font-bold border border-gray-300 my-auto mx-10 w-[120px]"
                             variant="ghost"
                           >
                             {selectedSection?.total_marks} Marks
@@ -379,12 +387,10 @@ const SetExamPage = ({ status, exam_details }) => {
                         </div>
                       </div>
                       <div className="flex flex-row justify-end mb-1 mx-4 space-x-4">
-                        <Button className="bg-white  border border-gray-200 rounded-sm w-[100px] hover:text-white">
+                        <Button className="bg-white text-primary  border border-gray-200 rounded-sm w-[100px] hover:text-white">
                           Back
                         </Button>
-                        <Button className=" rounded-sm w-[100px]">
-                          Save
-                        </Button>
+                        <Button className=" rounded-sm w-[100px]">Save</Button>
                       </div>
                     </div>
                   )
@@ -402,9 +408,14 @@ const SetExamPage = ({ status, exam_details }) => {
 };
 export const SelectionField = ({ label, value, isLoading }) => (
   <div className="max-w-[400px] flex flex-col space-y-2">
-    <p className="text-md  font-semibold">{label}</p>
-    <div className="rounded-md border border-primary py-2 bg-gray-100 ">
-      {isLoading ? <SkeletonMini /> : <p className="mx-5">{value}</p>}
+    <p className="text-sm text-gray-400 font-semibold">{label}</p>
+    <div className="rounded-sm border border-gray-300 py-2 bg-gray-100 flex flex-row items-center justify-between ">
+      {isLoading ? (
+        <SkeletonMini />
+      ) : (
+        <p className="mx-5 text-xs text-gray-400">{value}</p>
+      )}
+      <ChevronDown className="h-4 w-4 mx-2 text-gray-400" />
     </div>
   </div>
 );

@@ -15,7 +15,7 @@ const SectionCard = ({ section, show = false }) => {
     <>
       <CardHeader className=" bg-gray-200 py-1 rounded-md flex flex-row items-center justify-between min-h-[50px] max-h-[50px] mt-2">
         <div className=" flex-1 text-center">
-          <CardTitle className="text-lg font-bold">
+          <CardTitle className=" font-bold">
             <p className=" font-bold capitalize">
               {capitalizeAllLetters(section?.name)}
             </p>
@@ -29,7 +29,7 @@ const SectionCard = ({ section, show = false }) => {
         )}
       </CardHeader>
       <CardHeader className=" py-1 mx-2 rounded-lg mb-4 mt-2">
-        <CardTitle className="text-lg text-center font-semibold">
+        <CardTitle className=" text-center font-semibold">
           <p>{section?.instructions}</p>
         </CardTitle>
       </CardHeader>

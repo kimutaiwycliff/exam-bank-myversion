@@ -3,7 +3,7 @@ const PreviewCard = ({ number, question, marks }) => {
     <div className="mb-4 mx-14">
       <div className="flex flex-row items-center space-x-10 mb-4">
         <p className="ml-2">{number}</p>
-        <p className="text-md">{question}</p>
+        <p className="">{question}</p>
         <p>({marks} Marks)</p>
       </div>
       <DottedLine marks={marks} />

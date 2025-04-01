@@ -11,14 +11,15 @@ const PreviewPage = ({ exam_details, isLoading }) => {
   const router = useRouter();
   const items = [
     { name: 'Exams', url: '/staff/exams' },
-    { name: 'Set Paper', url: '/staff/exams/set-paper' },
+    { name: 'Exam Papers', url: 'staff/exams/examtype' },
+    { name: `${exam_details?.exam_name}`, url: `/staff/exams/set-paper/exam_paper/preview/${exam_details?.id}` },
   ];
   return (
     <div className="px-10">
-      <BreadCrumbsHeader items={items} containerClass={'pt-5 '}/>
+      <BreadCrumbsHeader items={items} containerClass={'pt-5'}/>
       <Card className="shadow-md border-0 mt-3 rounded-lg">
         <CardHeader className="flex flex-row justify-between  bg-slate-200 py-1 rounded-sm">
-          <Button variant="ghost" className=" font-bold text-md mt-1">
+          <Button variant="ghost" className=" font-bold  mt-1">
             {exam_details?.exam_name}
           </Button>
           <div className="flex flex-row space-x-2">
@@ -43,7 +44,7 @@ const PreviewPage = ({ exam_details, isLoading }) => {
               {' '}
               <Button
                 className={
-                  'text-md rounded-none font-semibold min-w-[200px] border-b-2 border-primary'
+                  ' rounded-none min-w-[200px] border-b-2 border-primary text-primary'
                 }
                 variant="ghost"
               >
