@@ -45,7 +45,7 @@ export default function LoginForm() {
       {/* <h3 className="text-xl font-bold text-center">USER LOGIN</h3> */}
 
       <div className="flex flex-col">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username" className='text-white italic'>Username</label>
         <input
           id="username"
           name="username"
@@ -60,7 +60,7 @@ export default function LoginForm() {
       </div>
 
       <div className="flex flex-col relative">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className='text-white italic'>Password</label>
         <input
           id="password"
           name="password"
