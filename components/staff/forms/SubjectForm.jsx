@@ -9,7 +9,7 @@ import { createSubject, updateSubject } from '@/lib/actions/Staff';
 import { useToast } from '@/hooks/use-toast';
 import CustomFormField from '@/components/forms/CustomFormField';
 import { Form } from '@/components/ui/form';
-import {  subjectFormFields } from './fields';
+import { subjectFormFields } from './fields';
 const SubjectForm = ({ setOpen, isEditSession, editId, editValues }) => {
   const { toast } = useToast();
   const form = useForm({
@@ -28,15 +28,21 @@ const SubjectForm = ({ setOpen, isEditSession, editId, editValues }) => {
     },
     onSuccess: () => {
       toast({
-        description: isEditSession ? 'Subject updated successfully!' : 'Subject created successfully!',})
+        description: isEditSession
+          ? 'Subject updated successfully!'
+          : 'Subject created successfully!',
+        variant: 'success',
+      });
       queryClient.invalidateQueries(['subjects']);
       setOpen(false);
     },
     onError: () => {
       toast({
-        description: isEditSession ? 'Failed to update subject.' : 'Failed to create subject.',
+        description: isEditSession
+          ? 'Failed to update subject.'
+          : 'Failed to create subject.',
         variant: 'destructive',
-      })
+      });
     },
   });
 
@@ -45,25 +51,25 @@ const SubjectForm = ({ setOpen, isEditSession, editId, editValues }) => {
   };
   return (
     <Form {...form}>
-    <form action={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-      {subjectFormFields.map((field) => (
-        <CustomFormField
-          key={field.name}
-          control={form.control}
-          name={field.name}
-          label={field.label}
-          fieldType={field.fieldType}
-          placeholder={field.placeholder}
-          iconSrc={field.iconSrc}
-          iconAlt={field.iconAlt}
-          selectItems={field.selectItems}
-        />
-      ))}
-      <SubmitButton />
-    </form>
-  </Form>
-  )
-}
+      <form action={form.handleSubmit(onSubmit)} className="w-full space-y-4">
+        {subjectFormFields.map((field) => (
+          <CustomFormField
+            key={field.name}
+            control={form.control}
+            name={field.name}
+            label={field.label}
+            fieldType={field.fieldType}
+            placeholder={field.placeholder}
+            iconSrc={field.iconSrc}
+            iconAlt={field.iconAlt}
+            selectItems={field.selectItems}
+          />
+        ))}
+        <SubmitButton />
+      </form>
+    </Form>
+  );
+};
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
@@ -76,4 +82,4 @@ function SubmitButton() {
     </Button>
   );
 }
-export default SubjectForm
+export default SubjectForm;

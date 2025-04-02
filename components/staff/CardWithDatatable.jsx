@@ -28,7 +28,7 @@ const CardWithTable = ({
         {items && <BreadCrumbsHeader items={items} />}
 
         <Card className=" border-1 sticky w-full">
-          <CardHeader className={cn('py-4 flex flex-row justify-between bg-slate-200 rounded-md text-xl', cardHeaderClass)}>
+          <CardHeader className={cn('py-1 flex flex-row justify-between items-center bg-slate-200 rounded-md text-xl', cardHeaderClass)}>
             {title && <CardTitle className="">{title}</CardTitle>}
 
             {Form && (

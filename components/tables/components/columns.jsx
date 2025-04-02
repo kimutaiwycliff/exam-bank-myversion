@@ -7,6 +7,14 @@ import { DataTableRowActions } from './data-table-row-actions';
 import { Badge } from '@/components/ui/badge';
 import SetExamModal from '@/components/staff/SetExamModal';
 import { format } from 'date-fns';
+import DialogModal from '@/components/staff/DialogModal';
+import SubjectForm from '@/components/staff/forms/SubjectForm';
+import GradeForm from '@/components/staff/forms/GradeForm';
+import StaffForm from '@/components/staff/forms/StaffForm';
+import TopicForm from '@/components/staff/forms/TopicForm';
+import SubtopicForm from '@/components/staff/forms/SubtopicForm';
+import DifficultyLevelForm from '@/components/staff/forms/DifficultyLevelForm';
+import QuestionForm from '@/components/staff/forms/QuestionForm';
 
 export const columns = [
   {
@@ -223,6 +231,25 @@ export const usersColumns = [
       );
     },
   },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={StaffForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
+        </div>
+      );
+    },
+  },
 ];
 
 export const gradeColumns = [
@@ -259,6 +286,25 @@ export const gradeColumns = [
       );
     },
   },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={GradeForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
+        </div>
+      );
+    },
+  },
 ];
 
 export const subjectColumns = [
@@ -291,6 +337,25 @@ export const subjectColumns = [
       return (
         <div className="w-[250px] truncate font-medium">
           {row.getValue('description')}
+        </div>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={SubjectForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
         </div>
       );
     },
@@ -353,6 +418,25 @@ export const topicColumns = [
         <span className="max-w-[10px] truncate font-medium">
           {row.getValue('description')}
         </span>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={TopicForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
+        </div>
       );
     },
   },
@@ -426,6 +510,25 @@ export const subtopicColumns = [
       );
     },
   },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={SubtopicForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
+        </div>
+      );
+    },
+  },
 ];
 export const difficultyLevelsColumns = [
   {
@@ -457,6 +560,25 @@ export const difficultyLevelsColumns = [
       return (
         <div className="w-[250px]  truncate font-medium">
           {row.getValue('description')}
+        </div>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={DifficultyLevelForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
         </div>
       );
     },
@@ -531,6 +653,25 @@ export const questionColumns = [
       return (
         <div className="w-[250px] truncate font-medium">
           {row.getValue('date_created')}
+        </div>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    header: () => <div className="">Actions</div>,
+    cell: ({ row }) => {
+      const set_exam = row.original;
+
+      return (
+        <div className="flex gap-1 items-center">
+          <DialogModal
+            title={set_exam.name}
+            FormComponent={QuestionForm}
+            isEditSession={true}
+            editId={set_exam.id}
+            editValues={set_exam}
+          />
         </div>
       );
     },

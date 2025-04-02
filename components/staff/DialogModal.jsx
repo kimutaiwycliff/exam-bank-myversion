@@ -37,9 +37,9 @@ const DialogModal = ({
       )}
       {title !== 'Questions' && (
         <DialogTrigger asChild>
-          <Button>
+          <Button className='min-w-[100px] flex items-center'>
             {isEditSession ? (
-              `Edit ${title}`
+              `Edit`
             ) : (
               <>
                 <CirclePlus />
