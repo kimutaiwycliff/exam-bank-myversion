@@ -54,7 +54,7 @@ export default function LoginForm() {
           onChange={handleChange}
           required
           autoFocus
-          className="p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+          className="p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary text-sm italic"
         />
         {errors.username && <p className="text-red-500">{errors.username}</p>}
       </div>
